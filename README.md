@@ -1,1 +1,1 @@
-## This is the simple readme file
+## Simple repository that keeps all the notes
