@@ -42,6 +42,10 @@
 
 ### Basic commands
 ```bash
+clear    # clear the terminal
+
+pwd    # tells the present working direcotry
+
 id   # tells about you(user)
 
 hostname    # tells the hostname
@@ -89,6 +93,12 @@ apropos compress
 ```bash
 ls    # used to list the content of the current directory
 
+ls -lS    # sort by size of the file
+
+ls -d */    # lists only directories
+
+ls -R    # recursively shows directories
+
 ls file*.txt    # mathces 0 or more characters in place of *(wildcard)
 
 ls file?.txt    # mathces exactly one character in place of ?
@@ -104,6 +114,10 @@ ls --ignore=b*    # ignore all which starts with letter b
 ls -lash    # show all files in the human readable
 
 ls -lash /usr    # list all the content inside /usr
+
+ls > file.txt    # prints all output to file.txt(doesn't append)
+
+ls >> file.txt    # appends the output to file.txt
 
 man ls    # prints the man page of the ls command, for more flags use "ls --help"
 ```
@@ -121,6 +135,8 @@ man ls    # prints the man page of the ls command, for more flags use "ls --help
 cd    # go to the home directory(~), same as "cd ~"
 
 cd /home    # change the directory to home
+
+cd ..    # change the working directory one level up
 
 tail <filename>    # prints the last 10 line of the file
 
@@ -148,7 +164,7 @@ tar -zcf archive.tar.gz textfile.txt folder1    # Now this is in compressed form
 tar -xzf archive.tar.gz -C hello    # Extracting into hello folder, hello folder must be exist
 ```
 
-### More on folders and files
+### More on directories and files
 ```bash
 touch <filename>    # Creates an empty file with the given name
 
@@ -166,9 +182,77 @@ touch file{z..a..2}.txt    # similar to above
 
 echo {a..z}{1..5}    # prints all permutations a1, a2, a3 etc.
 
-ls > file.txt    # prints all output to file.txt(doesn't append)
+mkdir image    # creating new directory with name image
 
-ls >> file.txt    # appends the output to file.txt
+mkdir image/image1    # for creating image1, image must be exists
 
+mkdir -p image/image1/image2    # forcefully creates the folders, doesn't matter if any one of them exists or not
 
+mkdir -p names/{john,tom,bob}    # creates 3 directories inside names
+
+rmdir a/b/c/d    # delete d directory only
+
+rmdir -p a/b/c/d    # delete all folders, use -v flag to show more information
+
+rm a/b    # remove file b
+
+rm -rv a/b    # remove everything
+
+rm -r a    # enough to delete all child
 ```
+
+### copying and pasting
+```bash
+cp file1.txt file2.txt    # content of file1 will be copied to file2, if file2 doesn't exists it creates
+
+cp file1.txt dir1    # copy file to dir1 directory
+
+cp file1.txt file2.txt dir2    # copy multiple files in dir2 directory, overrides if any exists already
+
+cp -i file1.txt file2.txt dir2    # will confirm by interacting, dir2 could be absolute or relative path
+
+cp ../file1.txt ../file2.txt .    # copying relative or absolute path in present directory
+
+cp -R dir1 dir2    # all content of dir1 will be copied to dir2, if the destination doesn't exist it creates
+
+cp -vR dir1 dir2    # if dir2 exists, it copies dir1 itself inside dir2
+
+man cp    # know all about cp command
+
+mv file1.txt file2.txt    # renaming the file1 to file2
+
+mv file1.txt dir1/    # move to directory dir1, if file1.txt already exists in dir1 it will override
+
+mv -i file1.txt dir1/    # interactive mode
+
+mv dir1 dir2    # move dir1 to dir2, if directory doesn't exist simply rename it, use -v for more information 
+```
+
+### cat command
+```bash
+cat file.txt    # shows the content of the file
+
+cat file1.txt file2.txt    # shows the content of both files
+
+cat -b file.txt    # shows only non-blank lines
+
+cat -n file.txt    # also shows each line number including blank lines
+
+cat -S file.txt    # if we have multiple blank lines it shows only once
+
+cat -E file.txt    # adds $ sign at the end of every line
+
+man cat    # shows the man page of cat command
+```
+
+### redirection using cat command
+```bash
+cat > test.py    # start writing the content into test.py file, use CTRL + D to end this or save the changes
+
+cat >> test.py    # start appendnig the content into test.py file, use CTRL + D to end this or save the changes
+
+cat file1.txt file2.txt > file3.txt    # combine and transfer to new file
+
+cat file1.txt >> file2.txt    # appends file1 data to file2
+```
+
