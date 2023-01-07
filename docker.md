@@ -5,12 +5,20 @@
 - ```docker -v```
 
 ### Checking all docker images present in our system
-- ```docker images```
-- ```docker image ls```
+```
+docker images
+```
+```
+docker image ls
+```
 
 ### Searching a docker image in docker hub
-- ```docker search <imagename>```
-- ```docker search redis```
+```
+docker search <imagename>
+```
+```
+docker search redis
+```
 
 ### Pulling docker image from docker hub
 - ```docker pull <imagename>```
