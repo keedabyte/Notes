@@ -1,6 +1,6 @@
-> # Setting up Kafka
+# Setting up Kafka
 
-## Start Zookeeper and Kafka Broker 
+## Start Zookeeper and Kafka Broker
 
 - Start up the Zookeeper.  
 
