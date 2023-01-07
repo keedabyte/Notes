@@ -42,7 +42,9 @@ docker run --name <custom-container-name> <imagename>
 ```
 
 ### List all running containers
-```docker ps```
+```
+docker ps
+```
 
 ### List all running and stopped containers
 ```
