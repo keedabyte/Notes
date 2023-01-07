@@ -147,6 +147,15 @@ tail -f <filename>    # keeps on running and shows the live content if any new a
 which firefox    # tells the location of firefox
 
 whereis firefox    # similar to above command
+
+cal    # calender
+ncal   # similar as above
+ncal 2016    # 2016 calender
+ncal 2 2016    # February month 2016 calender
+ncal -3    # previous 3 months calender
+
+date    # display current date and time
+date -s "11/20/2003 12:48:00"   # setting the date and time
 ```
 
 ### Collection of folders and files
@@ -353,7 +362,11 @@ find / -name dmesg
 sudo find / -name dmesg
 find /home/ -mtime -3    # will show all files within past 3 days.
 
-
+wc file.txt    # word count(number of lines, number of words, number os characters)
+wc -c file.txt    # count only characters
+# -l -> only lines
+# -w -> only words
+# -L -> number of characters in longest line
 
 ```
 
@@ -373,4 +386,19 @@ chmod a-rwx file    # same as above command
 
 # We can also user octal or numerial permission
 chmod 012 file    # 000(rwx) for user, 001 for group, 010 for others
+```
+
+### Combining commands
+```bash
+ls; pwd    # using semicolon
+date; cal; pwd    # sequence matters
+
+ls && pwd && date && cal    # using &&, sequence matters
+# ; -> runs every command reagardless of failure of particular command
+# && -> stop executing if any fails
+
+ls || pwd    # logical OR operation(if first one success then it will not go for others)
+
+sleep 10    # sleeps 10 seconds
+sleep 10 &    # sleeps 10 seconds in the background 
 ```
