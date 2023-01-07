@@ -1,7 +1,7 @@
 # Linux Tutorial
 
 ## File structure of linux
-    > In linux everything is a file
+    In linux everything is a file
 - ```/```
     - This is the root direcotry of the linux
 - ```/bin```  
