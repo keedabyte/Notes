@@ -141,9 +141,7 @@ date -s "11/20/2003 12:48:00"   # setting the date and time
 ### Collection of folders and files
 ```bash
 tar -cf archive.tar textfile.txt folder1    # Creates a tar file and place textfile .txt and folder1 together but **It is not in the compressed form
-
 tar -zcf archive.tar.gz textfile.txt folder1    # Now this is in compressed form
-
 tar -xzf archive.tar.gz -C hello    # Extracting into hello folder, hello folder must be exist
 ```
 
@@ -218,11 +216,8 @@ cat file1.txt >> file2.txt    # appends file1 data to file2
 ### redirection using cat command
 ```bash
 cat > test.py    # start writing the content into test.py file, use CTRL + D to end this or save the changes
-
 cat >> test.py    # start appendnig the content into test.py file, use CTRL + D to end this or save the changes
-
 cat file1.txt file2.txt > file3.txt    # combine and transfer to new file
-
 cat file1.txt >> file2.txt    # appends file1 data to file2
 ```
 
@@ -249,28 +244,20 @@ pidof unity-control-center    # gives the process id of this service
 yes > /dev/null &    # & is used at the end to run the process in background
 
 ps -ux    # list all the processes ID
-
 ps -aux    # list all the process used by all users
-
 ps -U sanjay    # list all processes of sanjay user only
-
 ps -C gnome-terminal    # list all information about gnome-terminal process
-
 ps aux | grep yes    # seach for "yes" in all running processes
 
 kill -l    # lists the all kill signals
-
 kill -KILL <processid>    # kills forcefully(not recommended)
-
 kill -9 <processid>    # kill the process by passing the process id
-
 kill -SIGKILL <processid>    # 9 -> SIGKILL(same command as above)
 ```
 
 ### Memory related
 ```bash
 df    # tells us about how much space is used or free in our machine
-
 df -h    # human readable form
 
 du    # tells us about disk space used by files
