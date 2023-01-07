@@ -1,8 +1,12 @@
 # Quick Docker reference
 
 ### Checking docker version
-- ```docker --version```
-- ```docker -v```
+```
+docker --version
+```
+```
+docker -v
+```
 
 ### Checking all docker images present in our system
 ```
@@ -21,76 +25,122 @@ docker search redis
 ```
 
 ### Pulling docker image from docker hub
-- ```docker pull <imagename>```
-- ```docker pull ubuntu```
+```
+docker pull <imagename>
+```
+```
+docker pull ubuntu
+```
 
 ### Running a docker image
-- ```docker run <imagename>```
--  use ```—name <custum-container-name>``` to give custom name of container
+```
+docker run <imagename>
+```
+use ```-—name <custum-container-name>``` to give custom name of container
 
 ### List all running containers
-- ```docker ps```
+```docker ps```
 
 ### List all running and stopped containers
-- ```docker ps -a```
-- ```docker ps --all```
+```
+docker ps -a
+```
+```
+docker ps --all
+```
 
 ### Running an image in interactive mode
-- ```docker run -it <imagename/imageid>```
+```
+docker run -it <imagename/imageid>
+```
 
 ### Note:  ```docker run``` = ```docker create``` + ```docker start```
 
 ### Start and Stop the container
-- ```docker start <containerid>```
-- ```docker stop <containerid>```
-- ```docker stop -f <containerid>```  
-forcefully stop the docker container
+```
+docker start <containerid>
+```
+```
+docker stop <containerid>
+```
+```
+docker stop -f <containerid>
+// forcefully stop the docker container
+```  
 
 ### Creating a container of a docker image
-- ```docker create <imagename/imageid>```
+```
+docker create <imagename/imageid>
+```
 
 ### Starting the container in attach mode
-- ```docker start -a <container-id>```  
--a prints the output of the docker container in our terminal
+```
+docker start -a <container-id>
+// -a prints the output of the docker container in our terminal
+```  
 
 ### Starting the container
-- ```docker start <container-id>```
+```
+docker start <container-id>
+```
 
 ### Printing the logs of a container
-- ```docker logs <container-id>```
+```
+docker logs <container-id>
+```
 
 ### Killing a running container
-- ```docker kill <container-id>```  
-we need to kill the container if it doesn't stops
+```
+docker kill <container-id>
+// we need to kill the container if it doesn't stops
+```  
 
 ### Going inside/Executing a container
-- ```docker exec -it <container-id> <startup-command>```  
--i is used for attaching the std in to docker
--t is used for formatting the output
+```
+docker exec -it <container-id> <startup-command>
+// -i is used for attaching the std in to docker
+// -t is used for formatting the output
+```  
 
 ### Mapping host machine port to docker machine port
-- ```docker run -p 8080:80 nginx```  
-map docker 80 port to local machine 8080 port
+```
+docker run -p 8080:80 nginx
+// map docker 80 port to local machine 8080 port
+```  
 
 ### Running the process in the background
-- ```docker run -d -p 8080:80 nginx```
+```
+docker run -d -p 8080:80 nginx
+```
 
 ### Removing a docker container
-- ```docker rm <container-id>```
+```
+docker rm <container-id>
+```
 
 ### Removing a docker image
-- ```docker image rm <image-id>```
-- ```docker rmi <imagename:tagname>```
+```
+docker image rm <image-id>
+```
+```
+docker rmi <imagename:tagname>
+```
 
 ### Restarting the container
-- ```docker restart <container-id>```  
-this command can be used to start the stopped container as well
+```
+docker restart <container-id>
+// this command can be used to start the stopped container as well
+```  
 
 ### Removing all docker stopped container
-- ```docker system prune```
+```
+docker system prune
+```
 
 ### inspecting the docker container/images
-- ```docker inspect <container/image id>```
+```
+docker inspect <container/image id>
+```
 
 ### Some other useful commands
 - docker login  
