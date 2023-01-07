@@ -245,6 +245,20 @@ cat -E file.txt    # adds $ sign at the end of every line
 man cat    # shows the man page of cat command
 ```
 
+<details>
+<summary>Redirection using cat command </summary>
+
+```bash
+cat > test.py    # start writing the content into test.py file, use CTRL + D to end this or save the changes
+
+cat >> test.py    # start appendnig the content into test.py file, use CTRL + D to end this or save the changes
+
+cat file1.txt file2.txt > file3.txt    # combine and transfer to new file
+
+cat file1.txt >> file2.txt    # appends file1 data to file2
+```
+</details>
+
 ### redirection using cat command
 ```bash
 cat > test.py    # start writing the content into test.py file, use CTRL + D to end this or save the changes
