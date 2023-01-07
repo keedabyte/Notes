@@ -44,6 +44,8 @@
 ```bash
 clear    # clear the terminal
 
+sudo -s    # goto super user mode
+
 pwd    # tells the present working direcotry
 
 id   # tells about you(user)
@@ -142,17 +144,9 @@ tail <filename>    # prints the last 10 line of the file
 
 tail -f <filename>    # keeps on running and shows the live content if any new added, hit CTRL + C to exit.
 
-yes > /dev/null &    # & is used at the end to run the process in background
+which firefox    # tells the location of firefox
 
-ps aux    # list the all running processes
-
-ps aux | grep yes    # seach for "yes" in all running processes
-
-kill -l    # lists the all kill signals
-
-kill -9 <processid>    # kill the process by passing the process id
-
-kill -SIGKILL <processid>    # 9 -> SIGKILL(same command as above)
+whereis firefox    # similar to above command
 ```
 
 ### Collection of folders and files
@@ -245,7 +239,7 @@ cat -E file.txt    # adds $ sign at the end of every line
 man cat    # shows the man page of cat command
 ```
 
-<details>
+<!-- <details>
 <summary>Redirection using cat command </summary>
 
 ```bash
@@ -257,7 +251,7 @@ cat file1.txt file2.txt > file3.txt    # combine and transfer to new file
 
 cat file1.txt >> file2.txt    # appends file1 data to file2
 ```
-</details>
+</details> -->
 
 ### redirection using cat command
 ```bash
@@ -270,3 +264,113 @@ cat file1.txt file2.txt > file3.txt    # combine and transfer to new file
 cat file1.txt >> file2.txt    # appends file1 data to file2
 ```
 
+### Reading the file with less command
+```bash
+less big.txt    # read the big file
+# use up-key, down-key, SHIFT + G -> end of file, 1g -> goto top
+# /book -> search book up to down, n for next and p for previous
+# ?book -> search book down to up, n for next and p for previous
+# q -> quit from less command
+man less    # manual page for less command
+```
+
+### Process related
+```bash
+top    # show realtime processes with process id(PID)
+# press s -> and give refresh time
+# press i -> if any process is idle will not displayed here
+# press k -> give pid to kill the process
+# press q -> quit the top command
+
+pidof unity-control-center    # gives the process id of this service
+
+yes > /dev/null &    # & is used at the end to run the process in background
+
+ps -ux    # list all the processes ID
+
+ps -aux    # list all the process used by all users
+
+ps -U sanjay    # list all processes of sanjay user only
+
+ps -C gnome-terminal    # list all information about gnome-terminal process
+
+ps aux | grep yes    # seach for "yes" in all running processes
+
+kill -l    # lists the all kill signals
+
+kill -KILL <processid>    # kills forcefully(not recommended)
+
+kill -9 <processid>    # kill the process by passing the process id
+
+kill -SIGKILL <processid>    # 9 -> SIGKILL(same command as above)
+```
+
+### Memory related
+```bash
+df    # tells us about how much space is used or free in our machine
+
+df -h    # human readable form
+
+du    # tells us about disk space used by files
+
+cd Desktop/
+du -h
+
+du -sh    # summary with human readable form
+
+du -sh /etc/    # with directories
+
+sudo du -sh    # if we require to do so
+
+free    # displays the total amount of free and used physical and swap memory in the system as well as buffer used by the kernel
+
+free -b    # shows in bytes
+# -k -> kilobytes
+# -m -> megabytes
+# -g -> gigabytes
+# -tera -> terabytes
+
+watch free -m    # watch command is used to show repeatedely the output of any commands(free in this case), watch can be used with any commands
+
+watch -n 1 free -m    # setting the watch frequency to 1 second, we can pass in decimal as well(0.1)
+```
+
+### File content related
+```bash
+head filename    # shows the first 10 lines of data of the file
+head -n3 filename    # shows first 3 lines
+head -3 filename
+head file1 file2    # for multiple files
+
+tail filename    # shows last 10 lines of data of the file
+tail -n3 filename
+tail -3 filename
+tail -f filename    # it will not go out of the terminal
+
+find /home/programming/ -name file.*    # find the file in given directories
+
+find / -name dmesg
+sudo find / -name dmesg
+find /home/ -mtime -3    # will show all files within past 3 days.
+
+
+
+```
+
+### Changing permissions
+```bash
+chmod o+x file    # (o, g, u, a) -> (others, group, user, all)
+# (+, -) -> (add permission, remove permission)
+# (r, w, x) -> (read permission, write permission, execute permission) 
+
+chmod ug=rwx file    # setting read, write execute permissions to user and group
+
+chmod u+rw, g=rw, o+r file    # adding read, write permission to user, setting read, write permission for group, adding read permission for others
+
+chmod ugo-rwx file    # removing all premission from all
+
+chmod a-rwx file    # same as above command
+
+# We can also user octal or numerial permission
+chmod 012 file    # 000(rwx) for user, 001 for group, 010 for others
+```
