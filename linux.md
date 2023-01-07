@@ -1,11 +1,9 @@
-```java
-public static void main(String[] args){
-    // Printing 
-    System.out.println("Hello world");
-}
-```
+# Linux Tutorial
 
-```bash
-ls -lash
-# this command used to list the content
-```
+## File structure of linux
+    > In linux everything is a file
+- ```/```
+    - This is the root direcotry of the linux
+- ```/bin```  
+    - All the binary files resides here
+    - ex. ls, man etc.
