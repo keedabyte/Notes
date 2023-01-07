@@ -36,7 +36,10 @@ docker pull ubuntu
 ```
 docker run <imagename>
 ```
-use ```-—name <custum-container-name>``` to give custom name of container
+```
+docker run --name <custom-container-name> <imagename>
+// giving a custom name to container
+```
 
 ### List all running containers
 ```docker ps```
