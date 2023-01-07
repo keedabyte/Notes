@@ -201,7 +201,7 @@ rm -rv a/b    # remove everything
 rm -r a    # enough to delete all child
 ```
 
-### copying and pasting
+### copying, moving and renaming
 ```bash
 cp file1.txt file2.txt    # content of file1 will be copied to file2, if file2 doesn't exists it creates
 
