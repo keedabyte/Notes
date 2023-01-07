@@ -94,33 +94,19 @@ apropos compress
 ### Listing the files
 ```bash
 ls    # used to list the content of the current directory
-
 ls -lS    # sort by size of the file
-
 ls -d */    # lists only directories
-
 ls -R    # recursively shows directories
-
 ls file*.txt    # mathces 0 or more characters in place of *(wildcard)
-
 ls file?.txt    # mathces exactly one character in place of ?
-
 ls --ignore=snap    # listout all the files except snap one, we can pass any pattern in place of snap
-
 ls -I snap    # we can use -I instead of --ignore
-
 ls --ignore=snap --ignore=home
-
 ls --ignore=b*    # ignore all which starts with letter b
-
 ls -lash    # show all files in the human readable
-
 ls -lash /usr    # list all the content inside /usr
-
 ls > file.txt    # prints all output to file.txt(doesn't append)
-
 ls >> file.txt    # appends the output to file.txt
-
 man ls    # prints the man page of the ls command, for more flags use "ls --help"
 ```
 
@@ -135,14 +121,8 @@ man ls    # prints the man page of the ls command, for more flags use "ls --help
 ### More commands
 ```bash
 cd    # go to the home directory(~), same as "cd ~"
-
 cd /home    # change the directory to home
-
 cd ..    # change the working directory one level up
-
-tail <filename>    # prints the last 10 line of the file
-
-tail -f <filename>    # keeps on running and shows the live content if any new added, hit CTRL + C to exit.
 
 which firefox    # tells the location of firefox
 
@@ -170,81 +150,54 @@ tar -xzf archive.tar.gz -C hello    # Extracting into hello folder, hello folder
 ### More on directories and files
 ```bash
 touch <filename>    # Creates an empty file with the given name
-
 touch file{1,2,3,4}.txt    # Creates file like file1.txt, file2.txt etc.
-
 touch file-{nm, gs,}.txt    # similar to above command, file-nm.txt, file-gs.txt, file-.txt
-
 touch file{1..30}.txt    # file1.txt, file2.txt ... upto file30.txt
-
 touch file{a..z}.txt    # similar to above
-
 touch file{a..z..2}.txt    # skip(gap) is now set to 2, eg: a, c, e..
-
 touch file{z..a..2}.txt    # similar to above
 
 echo {a..z}{1..5}    # prints all permutations a1, a2, a3 etc.
 
 mkdir image    # creating new directory with name image
-
 mkdir image/image1    # for creating image1, image must be exists
-
 mkdir -p image/image1/image2    # forcefully creates the folders, doesn't matter if any one of them exists or not
-
 mkdir -p names/{john,tom,bob}    # creates 3 directories inside names
 
 rmdir a/b/c/d    # delete d directory only
-
 rmdir -p a/b/c/d    # delete all folders, use -v flag to show more information
 
 rm a/b    # remove file b
-
 rm -rv a/b    # remove everything
-
 rm -r a    # enough to delete all child
 ```
 
 ### copying, moving and renaming
 ```bash
 cp file1.txt file2.txt    # content of file1 will be copied to file2, if file2 doesn't exists it creates
-
 cp file1.txt dir1    # copy file to dir1 directory
-
 cp file1.txt file2.txt dir2    # copy multiple files in dir2 directory, overrides if any exists already
-
 cp -i file1.txt file2.txt dir2    # will confirm by interacting, dir2 could be absolute or relative path
-
 cp ../file1.txt ../file2.txt .    # copying relative or absolute path in present directory
-
 cp -R dir1 dir2    # all content of dir1 will be copied to dir2, if the destination doesn't exist it creates
-
 cp -vR dir1 dir2    # if dir2 exists, it copies dir1 itself inside dir2
-
 man cp    # know all about cp command
 
 mv file1.txt file2.txt    # renaming the file1 to file2
 
 mv file1.txt dir1/    # move to directory dir1, if file1.txt already exists in dir1 it will override
-
 mv -i file1.txt dir1/    # interactive mode
-
 mv dir1 dir2    # move dir1 to dir2, if directory doesn't exist simply rename it, use -v for more information 
 ```
 
 ### cat command
 ```bash
 cat file.txt    # shows the content of the file
-
 cat file1.txt file2.txt    # shows the content of both files
-
 cat -b file.txt    # shows only non-blank lines
-
 cat -n file.txt    # also shows each line number including blank lines
-
 cat -S file.txt    # if we have multiple blank lines it shows only once
-
 cat -E file.txt    # adds $ sign at the end of every line
-
 man cat    # shows the man page of cat command
 ```
 
@@ -324,15 +277,11 @@ du    # tells us about disk space used by files
 
 cd Desktop/
 du -h
-
 du -sh    # summary with human readable form
-
 du -sh /etc/    # with directories
-
 sudo du -sh    # if we require to do so
 
 free    # displays the total amount of free and used physical and swap memory in the system as well as buffer used by the kernel
-
 free -b    # shows in bytes
 # -k -> kilobytes
 # -m -> megabytes
@@ -340,7 +289,6 @@ free -b    # shows in bytes
 # -tera -> terabytes
 
 watch free -m    # watch command is used to show repeatedely the output of any commands(free in this case), watch can be used with any commands
-
 watch -n 1 free -m    # setting the watch frequency to 1 second, we can pass in decimal as well(0.1)
 ```
 
@@ -357,7 +305,6 @@ tail -3 filename
 tail -f filename    # it will not go out of the terminal
 
 find /home/programming/ -name file.*    # find the file in given directories
-
 find / -name dmesg
 sudo find / -name dmesg
 find /home/ -mtime -3    # will show all files within past 3 days.
@@ -375,13 +322,9 @@ wc -c file.txt    # count only characters
 chmod o+x file    # (o, g, u, a) -> (others, group, user, all)
 # (+, -) -> (add permission, remove permission)
 # (r, w, x) -> (read permission, write permission, execute permission) 
-
 chmod ug=rwx file    # setting read, write execute permissions to user and group
-
 chmod u+rw, g=rw, o+r file    # adding read, write permission to user, setting read, write permission for group, adding read permission for others
-
 chmod ugo-rwx file    # removing all premission from all
-
 chmod a-rwx file    # same as above command
 
 # We can also user octal or numerial permission
