@@ -139,6 +139,11 @@ ncal -3    # previous 3 months calender
 
 date    # display current date and time
 date -s "11/20/2003 12:48:00"   # setting the date and time
+
+uptime    # tells you how long this computer have been up.
+
+true && echo hi
+false && echo hi    # using multiple commands
 ```
 
 ### Collection of folders and files
@@ -371,9 +376,91 @@ sudo passwd username    # changing the password of the user
 sudo su - username    # login to particular user
 sudo su username    # same as above
 
-
-# if we try to create new user from non-root user using command "sudo useradd sanjay", we will get the error: currentuser is not in the sudoers file
+# if we try to create new user from non-root user we will get the error: currentuser is not in the sudoers file
 # sudoers file defines that who can use sudo.
 
+# we can edit the sudoers file using below command
+sudo visudo    # edit the sudoers file below
+---------------------------
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+sanjay ALL=(ALL:ALL) ALL    # Added new line for user sanjay
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
 
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+---------------------------
+# since we have added privileges for sanjay now sanjay user has all the access similar to root, also we can specify only specific commands for user
+# Ex. sanjay ALL=(ALL:ALL) /bin/ls /usr/bin/ls  -> allowing user to have only 'ls' command access
+
+sudo userdel thor    # deleting the user thor
+
+sudo groupadd infinitygroup    # adding a new group 'infinitygroup'
+
+cat /etc/group    # shows all the groups with its member
+
+groups    # shows the group of the current user logged in
+
+# In order to give permissions to specific group you can edit the file again using 'sudo visudo' command
+---------------------------
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+sanjay ALL=(ALL:ALL) ALL    # Added new line for user sanjay
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+%infinitygroup ALL = NOPASSWD:ALL    # Added permission for group
+---------------------------
+# Now the member of this group can do everything. They can access all the commands without using password
+
+sudo usermod -aG infinitygroup ironman   # Added 'ironman' user to 'infinitygroup' group, now ironman has all the access.
+
+sudo gpasswd -d ironman infinitygroup    # removing 'ironman' user from 'infinitygroup' group
+
+sudo groupdel infinitygroup    # deleting the 'infinitygroup' group
+
+sudo useradd -s /bin/bash -m -g ubuntu brian    # Creating user 'brian' with default shell, adding it into ubuntu group, creating home direcotry(-m)
+```
+
+### Grep command
+```bash
+# Search character patterns in file, we can also use it with any command
+
+grep [options] pattern file_path    # syntax for grep command
+# see the options below
+# -c -> display the number of matched line.
+# -h -> display matched line and hide file name.
+# -i -> ignore the case while matching.
+# -l -> display the list of files not lines.
+# -n -> display the matched line and line number.
+# -w -> for complete word matching only.
+# -v -> invert search.
+# -r -> recursive search.
+# -o -> display matched pattern
+
+grep "line1" file1 file2
+grep -c "line1" file1 file2
+ls -lash | grep note.* 
+```
+
+### Setting Environment variables and more
+```bash
+vi ~/.bashrc    # this file is used only at user level, add the below line to this file
+export ANOTHER_VARIABLE="SOMETHING SOMETHING"
+
+source ~/.bashrc    # loading the latest changes in bashrc file
+echo $ANOTHER_VARIABLE    # will print -> SOMETHING SOMETHING
+
+vi /etc/bashrc    # If I put something here will be available to every users.
+
+printenv    # prints all environment variables
+echo $USER    # prints the value of USER env variable
+
+sudo vi /etc/environment    # add below line to this file
+TEST_THING="Blah Blah"
+# Anything which I put here will be available to all users. Now you can hit from the terminal like below
+echo $TEST_THING
 ```
