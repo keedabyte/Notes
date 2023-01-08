@@ -44,7 +44,10 @@
 ```bash
 clear    # clear the terminal
 
-sudo -s    # goto super user mode
+su -s    # goto super user mode
+sudo su -     # same
+su root    # same as above
+sudo su root     # same
 
 pwd    # tells the present working direcotry
 
@@ -331,4 +334,46 @@ ls || pwd    # logical OR operation(if first one success then it will not go for
 
 sleep 10    # sleeps 10 seconds
 sleep 10 &    # sleeps 10 seconds in the background 
+```
+
+### Managing users in linux
+```bash
+# sudo -> super user do, it can change all the settings, can ruin the whole system
+
+sudo useradd thor    # Adds the user thor without asking passwords and all. It doesn't create user directory inside /home, it is lazy
+sudo useradd thor -m    # Creates a home directory for user thor
+
+sudo adduser thor    # Adding the new user thor, will ask the password and all.
+
+cat /etc/passwd    # list of all users
+# above command shows the output like below
+sanjay:x:1000:1000:Sanjay Kumar,,,:/home/sanjay:/bin/bash
+# first 'sanjay' is the username(user)
+# 'x' indicates that the password of sanjay user is stored in a seperate file called '/etc/shadow'
+# first '1000' is the userid
+# second '1000' is the groupid
+# then user provided information while creation of user
+# '/home/sanjay' is location of that user
+# '/bin/bash' is the default shell for that user
+
+sudo cat /etc/shadow    # hashed version of password
+
+# Whenever we create a user in linux, we create a user and a group of that user.
+
+usermod -h    # usermod command is used to do some modification of users
+
+sudo usermod ironman --shell /bin/bash    # chaning the default shell of iron man
+
+sudo usermod -l tonystark ironman    # changing username from ironman to tonystark
+
+sudo passwd username    # changing the password of the user
+
+sudo su - username    # login to particular user
+sudo su username    # same as above
+
+
+# if we try to create new user from non-root user using command "sudo useradd sanjay", we will get the error: currentuser is not in the sudoers file
+# sudoers file defines that who can use sudo.
+
+
 ```
